@@ -1,0 +1,36 @@
+.nav {
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #121212;
+  padding: 0 100px;
+}
+
+.nav h1 {
+  color: #eee;
+  font-size: 30px;
+}
+
+.nav span {
+  color: #000;
+  background-color: #a688fa;
+  padding: 5px 15px;
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+@media screen and (max-width: 768px) {
+  .nav {
+    height: 80px;
+    padding: 0 20px;
+  }
+
+  .nav h1 {
+    font-size: 20px;
+  }
+
+  .nav span {
+    font-size: 10px;
+  }
+}

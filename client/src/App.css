@@ -1,0 +1,95 @@
+.app {
+  height: calc(100vh - 150px);
+  width: 100%;
+  background-color: #3f3f3f;
+  padding: 50px 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.app h1 {
+  font-size: 30px;
+  color: #eee;
+  font-weight: 400;
+}
+
+.app form {
+  display: flex;
+  width: 100%;
+}
+
+.app input {
+  padding: 8px;
+  font-size: 15px;
+  width: 100%;
+  border: none;
+  border-radius: 5px 0 0 5px;
+  outline-color: #a688fa;
+}
+
+.app button {
+  padding: 8px 15px;
+  width: 200px;
+  font-size: 15px;
+  background-color: #a688fa;
+  font-weight: 600;
+  color: #000;
+  border: none;
+  cursor: pointer;
+  border-radius: 0 5px 5px 0;
+  text-transform: uppercase;
+}
+
+.app h3 {
+  color: #eee;
+  font-size: 15px;
+  font-weight: 300;
+}
+
+.app p{
+  color: red;
+  font-size: 15px;
+}
+
+.app .data {
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.app .data p {
+  color: #eee;
+  font-size: 15px;
+  font-weight: 300;
+}
+
+@media screen and (max-width: 768px) {
+  .app {
+    height: calc(100vh - 120px);
+    padding: 50px 20px;
+  }
+
+  .app h1 {
+    font-size: 20px;
+  }
+
+  .app input {
+    font-size: 12px;
+  }
+
+  .app button {
+    width: 150px;
+    font-size: 12px;
+    padding: 8px 10px;
+  }
+
+  .app h3 {
+    font-size: 12px;
+  }
+
+  .app .data p {
+    font-size: 12px;
+  }
+}
