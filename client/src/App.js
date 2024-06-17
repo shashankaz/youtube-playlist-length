@@ -6,6 +6,7 @@ const App = () => {
   const [playlistUrl, setPlaylistUrl] = useState("");
   const [durations, setDurations] = useState(null);
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const backendUrl = "http://localhost:5000";
 
@@ -13,6 +14,7 @@ const App = () => {
     e.preventDefault();
     try {
       setError("");
+      setLoading(true);
       const response = await axios.post(`${backendUrl}/playlist`, {
         url: playlistUrl,
       });
@@ -20,6 +22,8 @@ const App = () => {
     } catch (error) {
       setError("Invalid URL. Please enter a valid YouTube playlist URL.");
       console.error("Error fetching playlist duration:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -45,18 +49,25 @@ const App = () => {
         You can enter a playlist link or even a video link from the playlist!
       </h3>
       {error && <p>{error}</p>}
-      {durations && (
-        <div className="data">
-          <p>No of videos : {durations.totalVideos}</p>
-          <p>
-            Average length of video : {displayDuration(durations.averageVideo)}
-          </p>
-          <p>Total length of playlist : {displayDuration(durations.normal)}</p>
-          <p>At 1.25x Speed : {displayDuration(durations.speed1_25)}</p>
-          <p>At 1.5x Speed : {displayDuration(durations.speed1_5)}</p>
-          <p>At 1.75x Speed : {displayDuration(durations.speed1_75)}</p>
-          <p>At 2x Speed : {displayDuration(durations.speed2)}</p>
-        </div>
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        durations && (
+          <div className="data">
+            <p>No of videos : {durations.totalVideos}</p>
+            <p>
+              Average length of video :{" "}
+              {displayDuration(durations.averageVideo)}
+            </p>
+            <p>
+              Total length of playlist : {displayDuration(durations.normal)}
+            </p>
+            <p>At 1.25x Speed : {displayDuration(durations.speed1_25)}</p>
+            <p>At 1.5x Speed : {displayDuration(durations.speed1_5)}</p>
+            <p>At 1.75x Speed : {displayDuration(durations.speed1_75)}</p>
+            <p>At 2x Speed : {displayDuration(durations.speed2)}</p>
+          </div>
+        )
       )}
     </div>
   );
